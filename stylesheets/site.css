@@ -1,3 +1,15 @@
+/**
+ * Allows you to use retina images at various pixel densities.
+ * Examples:
+ *
+ *   @include retina(/images/mypic.jpg, 2);
+ *   @include retina(/images/mypic.jpg, 3, 100px 100px, left top no-repeat transparent);
+ *
+ * @param  {Value}  $path               The path to the file name minus extension.
+ * @param  {Number} $cap:    2          The highest pixel density level images exist for.
+ * @param  {Value}  $size:   auto auto  The intended width of the rendered image.
+ * @param  {Value}  $extras: null       Any other `background` values to be added.
+ */
 /*! normalize.css v2.0.1 | MIT License | git.io/normalize */
 /* ==========================================================================
    HTML5 display definitions
@@ -271,8 +283,6 @@ input[type="radio"] {
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box; }
 
@@ -326,13 +336,23 @@ body {
   margin: 0; }
 
 .Hero {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
   padding-right: 40px;
   padding-left: 40px;
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(/images/home/hero.jpg);
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(/images/home/hero.jpg);
   background-position: center;
   background-repeat: no-repeat;
@@ -342,18 +362,54 @@ body {
       margin-bottom: 40px; } }
   @media (min-width: 1024px) {
     .Hero {
-      flex-direction: row; }
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row; }
       .Hero > *:not(:last-child) {
         margin-right: 80px; } }
 
 .Hero-logo {
+  /*
+   * Set a counter and get the length of the image path.
+   */
+  /*
+   * Loop ver the image path and figure out the
+   * position of the dot where the extension begins.
+   */
+  /*
+   * If we were able to figure out where the extension is,
+   * slice the path into a base and an extension. Use that to
+   * calculate urls for different density environments. Set
+   * values for different environments.
+   */
+  /*
+   * Set a base background for 1x environments.
+   */
+  background: url("/images/logo-white.png") center bottom no-repeat;
+  background-size: contain;
+  /*
+   * Create an @2x-ish media query.
+   */
+  /*
+   * Create media queries for all environments that the user has
+   * provided images for.
+   */
+  /*
+   * If anything went wrong trying to separate the file from its
+   * extension, set a background value without doing anything to it.
+   */
   width: 300px;
   height: 100px;
-  max-width: 100%;
-  background-image: url(/images/logo-white.png);
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: contain; }
+  max-width: 100%; }
+  @media all and (-webkit-min-device-pixel-ratio: 1.5), all and (-o-min-device-pixel-ratio: 3 / 2), all and (min--moz-device-pixel-ratio: 1.5), all and (min-device-pixel-ratio: 1.5) {
+    .Hero-logo {
+      background: url("/images/logo-white@2x.png") center bottom no-repeat;
+      background-size: contain; } }
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .Hero-logo {
+      background: url("/images/logo-white@2x.png") center bottom no-repeat;
+      background-size: contain; } }
   @media (min-width: 1024px) {
     .Hero-logo {
       background-position: right center; } }
@@ -362,11 +418,13 @@ body {
   width: 200px;
   height: 2px;
   max-width: 100%;
+  background: -webkit-linear-gradient(left, transparent 0%, white 25%, white 75%, transparent 100%);
   background: linear-gradient(to right, transparent 0%, white 25%, white 75%, transparent 100%); }
   @media (min-width: 1024px) {
     .Hero-separator {
       width: 2px;
       height: 200px;
+      background: -webkit-linear-gradient(top, transparent 0%, white 25%, white 75%, transparent 100%);
       background: linear-gradient(to bottom, transparent 0%, white 25%, white 75%, transparent 100%); } }
 
 .Hero-slogan {
@@ -374,14 +432,21 @@ body {
   text-align: center; }
 
 .Panel {
-  flex-grow: 1; }
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
 
 .Panel.Panel--fold {
   min-height: 100%; }
 
 .Site {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   height: 100%; }
 
 .Slogan {
@@ -392,7 +457,11 @@ body {
   line-height: 28px; }
 
 .u-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex; }
 
 .u-flexGrowable {
-  flex-grow: 1; }
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
