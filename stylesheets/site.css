@@ -666,6 +666,9 @@ h6 {
   padding-left: 20px;
   background-color: #ffffff; }
 
+.Panel.Panel--alternative {
+  background-color: #000000; }
+
 .Panel.Panel--hero {
   background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(/images/home/hero.jpg);
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9)), url(/images/home/hero.jpg);
@@ -709,13 +712,24 @@ h6 {
 .Text {
   font-family: "Roboto", sans-serif;
   font-size: 12px;
-  line-height: 20px; }
+  line-height: 20px;
+  color: #000000; }
   @media (min-width: 1024px) {
     .Text {
       font-size: 16px; } }
   @media (min-width: 1024px) {
     .Text {
       line-height: 24px; } }
+
+.Text.Text--center {
+  text-align: center; }
+
+.Text.Text--legal {
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  color: #ffffff;
+  text-align: center; }
 
 .u-flex {
   display: -webkit-box;
