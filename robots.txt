@@ -1,4 +1,4 @@
 User-Agent: *
-Disallow: /
+Allow: /
 
-Sitemap: http://teste.semet.pt/sitemap.xml
+Sitemap: http://semet.pt/sitemap.xml
